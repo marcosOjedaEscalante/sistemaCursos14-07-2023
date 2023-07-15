@@ -1,4 +1,5 @@
 import express from 'express';
+import { routerEstudiantes } from '../routes/estudiantes.routes.js';
 
 export default class Server {
 
@@ -6,13 +7,16 @@ export default class Server {
         this.app = express();
         this.port = process.env.PORT;
 
+        this.middlewares();
         this.routes();
     }
 
+    middlewares(){
+        this.app.use(express.json());
+    }
+
     routes() {
-        this.app.get('/', (req, res) => {
-            res.send('Hello World!')
-        })
+        this.app.use('/estudiantes', routerEstudiantes);
     }
 
     listen() {
