@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deleteByIdEstudiante, findAllEstudiantes, findByIdEstudiante, insertEstudiante, updateEstudiante } from "../controllers/estudiantes.controller.js";
+import { deleteByIdEstudiante, findAllEstudiantes, findByIdEstudiante, insertEstudiante, llamarFormulario, updateEstudiante } from "../controllers/estudiantes.controller.js";
 
 const routerEstudiante = Router();
 
@@ -12,6 +12,8 @@ routerEstudiante.post('/insertar', insertEstudiante);
 routerEstudiante.post('/actualizar', updateEstudiante);
 
 routerEstudiante.get('/eliminarPorId/:id', deleteByIdEstudiante);
+
+routerEstudiante.get('/formularioInsertar', llamarFormulario);
 
 export{
     routerEstudiante
