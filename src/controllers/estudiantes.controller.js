@@ -1,5 +1,10 @@
-const findAllEstudiantes = (req, res) => {
-    res.render('index');
+import { Estudiante } from "../models/estudiante.js";
+
+const findAllEstudiantes = async (req, res) => {
+    const listadoEstudiantes = await Estudiante.findAll();
+    res.render('index', {
+        listadoEstudiantes
+    });
 }
 
 const findByIdEstudiante = (req, res) => {
