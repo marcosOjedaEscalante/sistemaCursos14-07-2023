@@ -1,5 +1,5 @@
 const findAllEstudiantes = (req, res) => {
-    res.send('Find all');
+    res.render('index');
 }
 
 const findByIdEstudiante = (req, res) => {

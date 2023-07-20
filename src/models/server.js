@@ -7,7 +7,12 @@ export default class Server {
         this.app = express();
         this.port = process.env.PORT;
 
+        this.middleware();
         this.routes();
+    }
+
+    middleware(){
+        this.app.set('view engine', 'hbs');
     }
 
     routes() {
