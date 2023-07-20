@@ -1,4 +1,5 @@
 import express from 'express';
+import { routerEstudiante } from '../routes/estudiantes.routes.js';
 
 export default class Server {
 
@@ -10,9 +11,7 @@ export default class Server {
     }
 
     routes() {
-        this.app.get('/', (req, res) => {
-            res.send('Hello World!')
-        })
+        this.app.use('/estudiantes', routerEstudiante);
     }
 
     listen() {
