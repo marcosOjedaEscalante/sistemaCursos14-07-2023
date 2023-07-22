@@ -1,5 +1,7 @@
 import express from 'express';
 import { routerEstudiantes } from '../routes/estudiantes.routes.js';
+import { routerPlanFormativo } from '../routes/planFormativo.routes.js';
+import { routerCurso } from '../routes/cursos.routes.js';
 
 export default class Server {
 
@@ -18,6 +20,8 @@ export default class Server {
 
     routes() {
         this.app.use('/estudiantes', routerEstudiantes);
+        this.app.use('/planFormativo', routerPlanFormativo);
+        this.app.use('/cursos', routerCurso);
     }
 
     listen() {

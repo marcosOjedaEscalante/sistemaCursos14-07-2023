@@ -30,8 +30,6 @@ Curso.belongsTo(PlanFormativo, {
     targetKey: 'codigo_plan_formativo'
 });
 
-
-
 export{
     PlanFormativo
 }
@@ -50,3 +48,8 @@ cursosPlan.forEach(curso => {
 });
 
 console.log(plan.dataValues); */
+
+/* const curso = await Curso.findByPk('0004', {
+    include: PlanFormativo
+});
+console.log(curso.dataValues); */

@@ -12,12 +12,6 @@ const Curso = sequelize.define('Curso', {
     },
     fecha_termno: {
         type: DataTypes.DATE
-    },
-    codigo_comuna: {
-        type: DataTypes.INTEGER
-    },
-    codigo_plan_formativo: {
-        type: DataTypes.STRING(30)
     }
 }, {
     tableName: 'curso',
