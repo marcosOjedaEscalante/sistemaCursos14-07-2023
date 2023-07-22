@@ -1,9 +1,16 @@
+import { Curso } from "../models/cursos.js";
+import { PlanFormativo } from "../models/planFormativo.js";
+
 const findAll = (req, res) => {
     res.json("find all");
 }
 
-const findById = (req, res) => {
-    res.json("find by id");
+const findById = async (req, res) => {
+    const id = req.params.id;
+    const plan = await PlanFormativo.findByPk(id, {
+        include: Curso
+    });
+    res.json(plan);
 }
 
 const create = (req, res) => {
