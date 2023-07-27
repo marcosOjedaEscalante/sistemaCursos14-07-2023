@@ -16,6 +16,7 @@ export default class Server {
 
     middlewares(){
         this.app.use(express.static('public'));
+        //this.app.use(express.urlencoded({extended: true})); web service con formularios, postman url encode
         this.app.use(express.json());
     }
 
