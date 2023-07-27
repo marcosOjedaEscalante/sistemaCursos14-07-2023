@@ -42,7 +42,7 @@ PlanFormativo.belongsToMany(Modulo, {
 
 /* sequelize.sync(); */
 
-const modulo = await Modulo.findOne({
+/* const modulo = await Modulo.findOne({
     where:{
         descripcion: 'Orientación al perfil y metodología'
     }
@@ -53,5 +53,5 @@ console.log(modulo);
 const planesFormativos = await modulo.getPlanFormativos();
 planesFormativos.forEach(plan => {
     console.log(plan.dataValues);
-});
+}); */
 
