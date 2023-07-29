@@ -18,14 +18,6 @@ const create = async (req = request, res = response) => {
         password,
         rol
     }
-
-    // Validaciones
-    const emailExiste = await Usuario.findOne({where: {correo}});
-    if(emailExiste){
-        return res.status(400).json({
-            msg: 'Correo ya se encuentra inscrito'
-        });
-    }
     // Encriptar contraseña
     const salt = bcrytpjs.genSaltSync();
     usuario.password = bcrytpjs.hashSync(password, salt);
