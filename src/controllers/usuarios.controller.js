@@ -27,8 +27,15 @@ const create = async (req = request, res = response) => {
     res.json(usuarioInsertado);
 }
 
-const update = (req = request, res = response) => {
-    res.send('Update');
+const update = async (req = request, res = response) => {
+    const id = req.params.id;
+    const { correo, ...resto } = req.body;
+    const usuarioActualizar = await Usuario.findByPk(id);
+    const salt = bcrytpjs.genSaltSync();
+    resto.password = bcrytpjs.hashSync(resto.password, salt);
+    const actualizado = await usuarioActualizar.update(resto);
+    actualizado.password = '';
+    res.json(actualizado);
 }
 
 const deleteById = (req = request, res = response) => {

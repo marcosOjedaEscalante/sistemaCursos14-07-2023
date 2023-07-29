@@ -14,7 +14,15 @@ const validarRol = async (rol) => {
     }
 }
 
+const validarIdUsuario =  async(id) => {
+    const idExiste = await Usuario.findByPk(id);
+    if(!idExiste){
+        throw new Error(`El id ${id} no existe para actualizar`);
+    }
+}
+
 export{
     validarCorreoExistencia,
-    validarRol
+    validarRol,
+    validarIdUsuario
 }
