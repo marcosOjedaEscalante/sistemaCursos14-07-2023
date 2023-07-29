@@ -2,8 +2,14 @@ import {request, response} from 'express';
 import bcrytpjs from 'bcryptjs';
 import { Usuario } from '../models/usuarios.js';
 
-const findAll = (req = request, res = response) => {
-    res.send('FindAll');
+const findAll = async (req = request, res = response) => {
+    /* const { offset, limit} = req.params; */
+    const {offset = 0, limit = 5} = req.query;
+    const usuarios = await Usuario.findAndCountAll({
+        offset: offset,
+        limit: limit
+    });
+    res.json(usuarios);
 }
 
 const findById = (req = request, res = response) => {
