@@ -3,6 +3,7 @@ import { routerEstudiantes } from '../routes/estudiantes.routes.js';
 import { routerPlanFormativo } from '../routes/planFormativo.routes.js';
 import { routerCurso } from '../routes/cursos.routes.js';
 import { routerUsuarios } from '../routes/usuarios.routes.js';
+import { routerAutenticacion } from '../routes/auth.routes.js';
 
 export default class Server {
 
@@ -21,6 +22,7 @@ export default class Server {
     }
 
     routes() {
+        this.app.use('/auth', routerAutenticacion);
         this.app.use('/estudiantes', routerEstudiantes);
         this.app.use('/planFormativo', routerPlanFormativo);
         this.app.use('/cursos', routerCurso);
