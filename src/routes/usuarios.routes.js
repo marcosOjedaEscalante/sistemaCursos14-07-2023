@@ -3,10 +3,13 @@ import { check } from "express-validator";
 import { create, deleteById, findAll, findById, update } from "../controllers/usuarios.controller.js";
 import { validarCampos } from "../middlewares/validarCampos.js";
 import { validarRol, validarCorreoExistencia, validarIdUsuario } from "../helpers/validacionesBD.js";
+import { validarJWT } from "../middlewares/validarJWT.js";
 
 const routerUsuarios = Router();
 
-routerUsuarios.get('/', findAll);
+routerUsuarios.get('/', [
+    validarJWT
+],findAll);
 
 routerUsuarios.get('/:id', findById);
 
