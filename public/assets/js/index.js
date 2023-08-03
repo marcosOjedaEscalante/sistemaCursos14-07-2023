@@ -15,6 +15,25 @@ btnLoguear.addEventListener('click', async () => {
             body: JSON.stringify(datos)
       }
       const response = await fetch(url, opciones);
-      const datosRecibidos = await response.json();
-      console.log(datosRecibidos);
+      const { token, msg } = await response.json();
+      if(!token){
+            console.log(msg);
+      }else{
+            consumoListadoUsuarios(token);
+      }
 });
+
+const consumoListadoUsuarios = async (token) => {
+      const contenedorPrincipal = document.querySelector('#contenedorPrincipal');
+      const url = 'http://localhost:8080/usuarios';
+      const opciones = {
+            method: 'GET',
+            headers: {
+                  'Authorization': token
+            }
+      }
+      const response = await fetch(url, opciones);
+      const datos = await response.json();
+      contenedorPrincipal.innerHTML = '';
+      console.log(datos);
+}
