@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { routerEstudiantes } from '../routes/estudiantes.routes.js';
 import { routerPlanFormativo } from '../routes/planFormativo.routes.js';
 import { routerCurso } from '../routes/cursos.routes.js';
@@ -16,6 +17,7 @@ export default class Server {
     }
 
     middlewares(){
+        this.app.use(cors());
         this.app.use(express.static('public'));
         //this.app.use(express.urlencoded({extended: true})); web service con formularios, postman url encode
         this.app.use(express.json());
